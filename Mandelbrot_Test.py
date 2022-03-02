@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import math
+import threading
 
 pygame.init()  
 pygame.display.set_caption("mandelbrot")  # sets the window title
@@ -13,7 +14,7 @@ multiplierX = 1
 multiplierY = 1
 movementX = 0
 movementY = 0
-resolution = .008
+resolution = .004
 
 #mandelbrot function definition------------------------ 
 def manCount(c):
@@ -24,7 +25,7 @@ def manCount(c):
         count+=1
     return count
 
-def manDraw(zooming =0, multiplierX =1, multiplierY =1, movementX =0, movementY =0, resolution =.008, upperBound =2, lowerBound =2):
+def manDraw(zooming =0, multiplierX =1, multiplierY =1, movementX =0, movementY =0, resolution =.004, upperBound =2, lowerBound =2):
     print(resolution)
     t = -lowerBound #lower bound for real axis
     while t<lowerBound: #upper bound for real (horizontal) axis
@@ -58,6 +59,7 @@ print("Please wait...")
 manDraw()
 print("Drawn!")
 print()
+
 while doExit == False:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -88,4 +90,4 @@ while doExit == False:
             movementX,movementY = pygame.mouse.get_pos ()
             manDraw(0,multiplierX,multiplierY,movementX - (500 * multiplierX),movementY - (500 * multiplierY),resolution)
             
-pygame.quit()#quit pygame
+#pygame.quit()#quit pygame
