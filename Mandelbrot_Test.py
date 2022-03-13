@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import math
+import threading
 
 pygame.init()  
 pygame.display.set_caption("mandelbrot")  # sets the window title
@@ -58,6 +59,7 @@ print("Please wait...")
 manDraw()
 print("Drawn!")
 print()
+
 while doExit == False:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -88,4 +90,4 @@ while doExit == False:
             movementX,movementY = pygame.mouse.get_pos ()
             manDraw(0,multiplierX,multiplierY,movementX - (500 * multiplierX),movementY - (500 * multiplierY),resolution)
             
-pygame.quit()#quit pygame
+#pygame.quit()#quit pygame
